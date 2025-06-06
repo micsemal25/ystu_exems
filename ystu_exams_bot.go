@@ -33,9 +33,9 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("Отклонить❌", "checkBAD"),
 		),
 	)
-	payMath&Curs = tgbotapi.NewInlineKeyboardMarkup(
+	payMathCurs = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payMath"),
+			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payMathCurs"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🔙 Назад", "backMenu"),
@@ -51,7 +51,7 @@ var (
 	)
 	payCurs = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payMath"),
+			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payCurs"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🔙 Назад", "backMenu"),
@@ -96,7 +96,7 @@ var (
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🧠[VIP] Ответы на вопросы к экзамену + курс", "math&curs"),
+			tgbotapi.NewInlineKeyboardButtonData("🧠[VIP] Ответы на вопросы к экзамену + курс", "mathcurs"),
 		),
 	)
 )
@@ -149,7 +149,7 @@ func main() {
 					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по математике (преп. Ройтенберг В.М.)"
 					msg.ReplyMarkup = checkBuyMath
 				}
-				if v[count] == "payMath&Curs" {
+				if v[count] == "payMathCurs" {
 					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по математике (преп. Ройтенберг В.М.) + курс с практикой и ДЗ"
 					msg.ReplyMarkup = checkBuyAIP
 				}
@@ -211,7 +211,7 @@ func main() {
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
-			case "math&curs":
+			case "mathcurs":
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
@@ -303,9 +303,9 @@ func main() {
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
-			case "payMath&Curs":
+			case "payMathCurs":
 				count++
-				v = append(v, "payMath&Curs")
+				v = append(v, "payMathCurs")
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
