@@ -77,7 +77,6 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("🎓[PRO] Курс с практикой и ДЗ", "cursMath"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🧠[VIP] Ответы на вопросы к экзамену + курс", "mathcurs"),
 		),
 	)
@@ -114,7 +113,7 @@ func main() {
 				}
 				if v[count] == "payMathCurs" {
 					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по математике (преп. Ройтенберг В.М.) + курс с практикой и ДЗ"
-					msg.ReplyMarkup = checkBuyAIP
+					msg.ReplyMarkup = checkBuyMathCurs
 				}
 				if v[count] == "payCurs" {
 					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Курс по матану с практикой и ДЗ"
