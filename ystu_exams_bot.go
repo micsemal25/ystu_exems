@@ -65,19 +65,21 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("📐 Математика", "math"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("💻 Ответы на АИП", "otvetyAIP"),
-		),
-		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🏷️ Ввести промокод", "promo"),
-		),
-		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🎁 Получить подарок", "podarok"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonURL("❓ Задать вопрос", "https://t.me/micsemal"),
 		),
+	)
+	menuMath = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonURL("📚 Заказать решение практики или лабы", "https://t.me/micsemal"),
+			tgbotapi.NewInlineKeyboardButtonData("[VIP] Ответы на вопросы к экзамену+ курс с практикой и ДЗ", "math&curs"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("[LITE] Ответы на вопросы к экзамену", "otvetyMath"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("[LITE+] Курс с практикой и ДЗ", "cursMath"),
 		),
 	)
 )
@@ -176,7 +178,19 @@ func main() {
 			}
 
 			switch update.CallbackQuery.Data {
-			case "math":
+			case "menuMath":
+				edit := tgbotapi.NewEditMessageTextAndMarkup(
+					update.CallbackQuery.Message.Chat.ID,
+					update.CallbackQuery.Message.MessageID,
+					"Выбери подходящий тариф:",
+					menuMath,
+				)
+				edit.ParseMode = "Markdown"
+
+				if _, err := bot.Send(edit); err != nil {
+					panic(err)
+				}
+			case "math&curs":
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
@@ -188,6 +202,7 @@ func main() {
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
+			case "otvetyMath":
 				edit2 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
@@ -199,6 +214,7 @@ func main() {
 				if _, err := bot.Send(edit2); err != nil {
 					panic(err)
 				}
+			case "cursMath":
 				edit3 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
@@ -338,7 +354,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике и АИП\nСкорее покупай! 🥰",
+					"Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике + курс по всему 2 семестру с теорией и разборами заданий из билетов прошлых лет + ДЗ! 🥰",
 					menuKeyboard,
 				)
 				edit.ParseMode = "Markdown"
