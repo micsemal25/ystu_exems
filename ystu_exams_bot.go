@@ -62,7 +62,7 @@ var (
 
 	menuKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("📐 Ответы на Математику", "otvetyMath"),
+			tgbotapi.NewInlineKeyboardButtonData("📐 Математика", "math"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("💻 Ответы на АИП", "otvetyAIP"),
@@ -161,7 +161,7 @@ func main() {
 
 			// Обработка команды /start
 			if update.Message.Command() == "start" {
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике и АИП\nСкорее покупай! 🥰")
+				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике + курс по всему 2 семестру с теорией и разборами заданий из билетов прошлых лет + ДЗ! 🥰")
 				msg.ParseMode = "Markdown"
 				msg.ReplyMarkup = menuKeyboard
 
@@ -176,16 +176,38 @@ func main() {
 			}
 
 			switch update.CallbackQuery.Data {
-			case "otvetyMath":
+			case "math":
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.)*\nЦена: 700 рублей",
+					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.) + курс с практикой и ДЗ*\nЦена: 1500 рублей",
 					payMath,
 				)
 				edit.ParseMode = "Markdown"
 
 				if _, err := bot.Send(edit); err != nil {
+					panic(err)
+				}
+				edit2 := tgbotapi.NewEditMessageTextAndMarkup(
+					update.CallbackQuery.Message.Chat.ID,
+					update.CallbackQuery.Message.MessageID,
+					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.)*\nЦена: 900 рублей",
+					payMath,
+				)
+				edit2.ParseMode = "Markdown"
+
+				if _, err := bot.Send(edit2); err != nil {
+					panic(err)
+				}
+				edit3 := tgbotapi.NewEditMessageTextAndMarkup(
+					update.CallbackQuery.Message.Chat.ID,
+					update.CallbackQuery.Message.MessageID,
+					"*Курс с практикой и ДЗ*\nЦена: 800 рублей",
+					payMath,
+				)
+				edit3.ParseMode = "Markdown"
+
+				if _, err := bot.Send(edit3); err != nil {
 					panic(err)
 				}
 
