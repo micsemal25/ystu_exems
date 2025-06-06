@@ -62,7 +62,7 @@ var (
 
 	menuKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("📐 Математика", "math"),
+			tgbotapi.NewInlineKeyboardButtonData("📐 Математика", "menuMath"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🎁 Получить подарок", "podarok"),
