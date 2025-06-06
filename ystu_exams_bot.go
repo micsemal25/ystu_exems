@@ -77,7 +77,7 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("🎓[PRO] Курс с практикой и ДЗ", "cursMath"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🧠[VIP] Ответы на вопросы к экзамену + курс", "mathcurs"),
+			tgbotapi.NewInlineKeyboardButtonData("🧠[VIP] Ответы на вопросы + курс", "mathcurs"),
 		),
 	)
 )
@@ -117,7 +117,7 @@ func main() {
 				}
 				if v[count] == "payCurs" {
 					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Курс по матану с практикой и ДЗ"
-					msg.ReplyMarkup = checkBuyAIP
+					msg.ReplyMarkup = checkBuyCurs
 				}
 				if _, err := bot.Send(msg); err != nil {
 					log.Panic(err)
