@@ -174,7 +174,7 @@ func main() {
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
 					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.) + курс с практикой и ДЗ*\nЦена: 1500 рублей",
-					payMath,
+					payMathCurs,
 				)
 				edit.ParseMode = "Markdown"
 
@@ -197,8 +197,8 @@ func main() {
 				edit3 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Курс по матану с практикой и ДЗ*\nЦена: 800 рублей",
-					payMath,
+					"*Курс по матану с практикой и ДЗ*\nЦена: 1000 рублей",
+					payCurs,
 				)
 				edit3.ParseMode = "Markdown"
 
