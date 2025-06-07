@@ -173,7 +173,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.) + курс с практикой и ДЗ*\nЦена: 1500 рублей",
+					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.) + курс с практикой и ДЗ*\nЦена: 1300 рублей",
 					payMathCurs,
 				)
 				edit.ParseMode = "Markdown"
@@ -185,7 +185,7 @@ func main() {
 				edit2 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.)*\nЦена: 900 рублей",
+					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.)*\nЦена: 800 рублей",
 					payMath,
 				)
 				edit2.ParseMode = "Markdown"
@@ -197,7 +197,7 @@ func main() {
 				edit3 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Курс по матану с практикой и ДЗ*\nЦена: 1000 рублей",
+					"*Курс по матану с практикой и ДЗ*\nЦена: 800 рублей",
 					payCurs,
 				)
 				edit3.ParseMode = "Markdown"
@@ -244,7 +244,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"🤑Оплата 900 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
+					"🤑Оплата 800 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
@@ -256,7 +256,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"🤑Оплата 1000 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
+					"🤑Оплата 800 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
@@ -267,7 +267,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"🤑Оплата 1500 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
+					"🤑Оплата 1300 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
