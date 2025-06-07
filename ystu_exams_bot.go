@@ -277,7 +277,7 @@ func main() {
 				if _, err := bot.Send(msg); err != nil {
 					panic(err)
 				}
-				msg1 := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, 'https://disk.yandex.ru/i/YuRJ6zj1hgqlMw . Ссылка на видео с курса на тему: "Исследование функций на экстремум"')
+				msg1 := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, 'https://disk.yandex.ru/i/YuRJ6zj1hgqlMw . Ссылка на видео с курса на тему: Исследование функций на экстремум.')
 				if _, err := bot.Send(msg1); err != nil {
 					panic(err)
 				}
