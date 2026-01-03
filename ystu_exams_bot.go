@@ -66,7 +66,7 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("💻 Алгоритмизация и программирование", "menuAIP"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("💻 Комплект Математика + АИП", "menuMathAIP"),
+			tgbotapi.NewInlineKeyboardButtonData("💎 Комплект Математика + АИП", "menuMathAIP"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🎁 Получить подарок", "podarok"),
@@ -314,7 +314,7 @@ func main() {
 					panic(err)
 				}
 				// Открываем PDF-файл
-				pdfFile1, err := os.Open("Домашнее задание по исследованию функций на экстремум.pdf")
+				pdfFile1, err := os.Open("Вопрос 1 (ВМ) (2).pdf")
 				if err != nil {
 					log.Panic(err)
 				}
@@ -322,7 +322,7 @@ func main() {
 
 				// Создаём документ для отправки
 				doc1 := tgbotapi.NewDocument(update.CallbackQuery.Message.Chat.ID, tgbotapi.FileReader{
-					Name:   "Домашнее задание по исследованию функций на экстремум.pdf",
+					Name:   "Вопрос 1 (ВМ) (2).pdf",
 					Reader: pdfFile1,
 				})
 
@@ -331,7 +331,7 @@ func main() {
 					log.Panic(err)
 				}
 				// Открываем PDF-файл
-				pdfFile2, err := os.Open("32. Интегральный признак сходимости рядов с положительными членами. Ряд Дирихле и условия его сходимости..pdf")
+				pdfFile2, err := os.Open("15 вопрос (АИП).pdf")
 				if err != nil {
 					log.Panic(err)
 				}
@@ -339,7 +339,7 @@ func main() {
 
 				// Создаём документ для отправки
 				doc2 := tgbotapi.NewDocument(update.CallbackQuery.Message.Chat.ID, tgbotapi.FileReader{
-					Name:   "32. Интегральный признак сходимости рядов с положительными членами. Ряд Дирихле и условия его сходимости..pdf",
+					Name:   "15 вопрос (АИП).pdf",
 					Reader: pdfFile2,
 				})
 
