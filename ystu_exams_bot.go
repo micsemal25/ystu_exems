@@ -17,28 +17,20 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("Отклонить❌", "checkBAD"),
 		),
 	)
-	checkBuyCurs = tgbotapi.NewInlineKeyboardMarkup(
+	checkBuyAIP = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("Подтвердить✅", "checkOKCurs"),
+			tgbotapi.NewInlineKeyboardButtonData("Подтвердить✅", "checkOKAIP"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Отклонить❌", "checkBAD"),
 		),
 	)
-	checkBuyMathCurs = tgbotapi.NewInlineKeyboardMarkup(
+	checkBuyMathAIP = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("Подтвердить✅", "checkOKMathCurs"),
+			tgbotapi.NewInlineKeyboardButtonData("Подтвердить✅", "checkOKMathAIP"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Отклонить❌", "checkBAD"),
-		),
-	)
-	payMathCurs = tgbotapi.NewInlineKeyboardMarkup(
-		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payMathCurs"),
-		),
-		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🔙 Назад", "backMenu"),
 		),
 	)
 	payMath = tgbotapi.NewInlineKeyboardMarkup(
@@ -49,18 +41,32 @@ var (
 			tgbotapi.NewInlineKeyboardButtonData("🔙 Назад", "backMenu"),
 		),
 	)
-	payCurs = tgbotapi.NewInlineKeyboardMarkup(
+	payAIP = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payCurs"),
+			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payAIP"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🔙 Назад", "backMenu"),
 		),
 	)
+	payMathAIP = tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("💸 Оплатить", "payMathAIP"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("🔙 Назад", "backMenu"),
+		),
+	)	
 
 	menuKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("📐 Математика", "menuMath"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("💻 Алгоритмизация и программирование", "menuAIP"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("💻 Комплект Математика + АИП", "menuMathAIP"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("🎁 Получить подарок", "podarok"),
@@ -71,15 +77,19 @@ var (
 	)
 	menuMath = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("✍️[LITE] Ответы на вопросы к экзамену", "otvetyMath"),
-		),
-		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🎓[PRO] Курс с практикой и ДЗ", "cursMath"),
-		),
-		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🧠[VIP] Ответы на вопросы + курс", "mathcurs"),
-		),
+			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену", "otvetyMath"),
+		)
 	)
+	menuAIP = tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену", "otvetyAIP"),
+		)
+	)
+	menuMathAIP = tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену по Математике + АИП", "otvetyAIP"),
+		)
+	)	
 )
 
 var m int = 0
@@ -111,13 +121,13 @@ func main() {
 					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по математике (преп. Ройтенберг В.М.)"
 					msg.ReplyMarkup = checkBuyMath
 				}
-				if v[count] == "payMathCurs" {
-					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по математике (преп. Ройтенберг В.М.) + курс с практикой и ДЗ"
-					msg.ReplyMarkup = checkBuyMathCurs
+				if v[count] == "payAIP" {
+					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по АИП (преп. Никитина Т.П.)"
+					msg.ReplyMarkup = checkBuyAIP
 				}
-				if v[count] == "payCurs" {
-					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Курс по матану с практикой и ДЗ"
-					msg.ReplyMarkup = checkBuyCurs
+				if v[count] == "payMathAIP" {
+					msg.Caption = "📸 Новый скриншот об оплате от пользователя: " + update.Message.From.UserName + "\nТовар: Ответы по Математике + АИП"
+					msg.ReplyMarkup = checkBuyMathAIP
 				}
 				if _, err := bot.Send(msg); err != nil {
 					log.Panic(err)
@@ -142,7 +152,7 @@ func main() {
 
 			// Обработка команды /start
 			if update.Message.Command() == "start" {
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике + курс по всему 2 семестру с теорией и разборами заданий из билетов прошлых лет + ДЗ! 🥰")
+				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике, а также Алгоритмизации и программированию! 🥰")
 				msg.ParseMode = "Markdown"
 				msg.ReplyMarkup = menuKeyboard
 
@@ -161,7 +171,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"Выбери подходящий тариф:",
+					"Выбери действие:",
 					menuMath,
 				)
 				edit.ParseMode = "Markdown"
@@ -169,18 +179,31 @@ func main() {
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
-			case "mathcurs":
+
+			case "menuAIP":
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Ответы на экзамен по математике (преп. Ройтенберг В.Ш.) + курс с практикой и ДЗ*\nЦена: 1300 рублей",
-					payMathCurs,
+					"Выбери действие:",
+					menuAIP,
 				)
 				edit.ParseMode = "Markdown"
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
+			case "menuMathAIP":
+				edit := tgbotapi.NewEditMessageTextAndMarkup(
+					update.CallbackQuery.Message.Chat.ID,
+					update.CallbackQuery.Message.MessageID,
+					"Выбери действие:",
+					menuMathAIP,
+				)
+				edit.ParseMode = "Markdown"
+
+				if _, err := bot.Send(edit); err != nil {
+					panic(err)
+				}				
 			case "otvetyMath":
 				edit2 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
@@ -193,12 +216,12 @@ func main() {
 				if _, err := bot.Send(edit2); err != nil {
 					panic(err)
 				}
-			case "cursMath":
+			case "otvetyAIP":
 				edit3 := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"*Курс по матану с практикой и ДЗ*\nЦена: 800 рублей",
-					payCurs,
+					"*Ответы на экзамен по Алгоритмизации и программированию (преп. Никитина Т.П.)*\nЦена: 600 рублей",
+					payAIP,
 				)
 				edit3.ParseMode = "Markdown"
 
@@ -207,7 +230,7 @@ func main() {
 				}
 
 			case "checkOKMath":
-				links := []string{"https://t.me/+Hm7JCKMS5p80YzQy","https://t.me/+i-1kWLSHbwxiMDU6","https://t.me/+Td6ZKPl55aRlMDk6","https://t.me/+qebWRLDdgrRhYjQy","https://t.me/+Ns6QuCVNsYgyMzRi","https://t.me/+fTlftaWs5IUyMjZi","https://t.me/+zkaabqZRQWAwMzdi","https://t.me/+FkrIykhzoA44Mzcy","https://t.me/+Yz-wlXzePU9jNWVi","https://t.me/+uRIynb6FGWVmNzhi","https://t.me/+ssEyrDQ4ZE4zNTgy","https://t.me/+jvVku9n0aKsxN2Ey","https://t.me/+RNSB52nh4s00YjQ6","https://t.me/+yjEejkckmiY5MmRi","https://t.me/+exfDaoih2yk3NmQy","https://t.me/+k-E6QMv_hnI1YjUy","https://t.me/+e66fLWh5l7I2MjUy","https://t.me/+Lq38ZJWWD7Y3Njk6","https://t.me/+86lS81a67Q00Nzky","https://t.me/+LMLNT4-Ka385ZmQy","https://t.me/+LwOlS5plmRdiNzgy","https://t.me/+GyOnbIQqU_Y3NmVi","https://t.me/+RadF3gvTR-M0ZGEy","https://t.me/+V0gXSsGj1eEwZGJi","https://t.me/+d1ma0Y0ykns3ZmUy","https://t.me/+WsQyULJTG2IwNzhi","https://t.me/+j2D2qjr53_c5NTFi","https://t.me/+MTBA9_IPBVk0OGUy","https://t.me/+jGJa2LXjredhNTBi","https://t.me/+oCucPaT8NDg2NzBi","https://t.me/+aSBmf3iSm-kyYmRi","https://t.me/+LtU7I9IfLY5kNTli","https://t.me/+17grbK7W6zZmYzYy","https://t.me/+0xWmHB5dP383Y2Yy","https://t.me/+chs8DyD8WrhjM2Ni","https://t.me/+Q9i_D8QOGBI5YjEy","https://t.me/+YyNsuuo_vTM5ZmNi","https://t.me/+RY5WPjJ_8P4xOWNi","https://t.me/+bpGO7BvA7SliNjBi","https://t.me/+47C6RsBZWD9kOGEy","https://t.me/+QNBoJXbdoJw5OGUy","https://t.me/+NwrKLqmbMWkxZDAy","https://t.me/+rDgB6OO55Vc0MWMy","https://t.me/+hZagTFEv4b4wYTky","https://t.me/+mfeZypIvd9U5MGUy"}
+				links := []string{"https://t.me/+MMcfy-nkA0tjZTli","https://t.me/+YIie7weL3qlmYmIy","https://t.me/+SeJ2vbADeWYwNDky","https://t.me/+ZcOwwyD46QpkN2U6","https://t.me/+0gQ8ilcuaBszNGM6","https://t.me/+P1nxlOfXg-0zMTYy","https://t.me/+ZIv6DFxrFNVkYzRi","https://t.me/+xEzO8RpatQ5iYzhi","https://t.me/+9hX-Th4499I3ZTcy","https://t.me/+oAacitUxbhMyZDgy","https://t.me/+SfDmXj1PB0diNzVi","https://t.me/+xKkvko1wjJ5iM2Zi","https://t.me/+81ck2IwQGtcxMmI6","https://t.me/+UZJHoU7kszw0MTNi","https://t.me/+D_PpuwEL_QhhOGY6","https://t.me/+eau2YNTPGSE2NGFi","https://t.me/+yzQ6LUFYrRRhMmFi","https://t.me/+kzU-y5dgpuc5OWIy","https://t.me/+PCk0csw1pbQ0NGUy","https://t.me/+gTCt7I_Fga03OTky","https://t.me/+-qG9K8yHwuE0YTc6","https://t.me/+fUxnfoR6-lYwNDEy","https://t.me/+6pHfQpDbp7JjYWIy","https://t.me/+t5ye9pfQ4nA4MDky","https://t.me/+h33aP4qxRHA3YzJi","https://t.me/+CGzkc6K5GCY0Yjgy","https://t.me/+T0nEVidEfnk1OTIy","https://t.me/+Arm0GYXRVMY2ZDU6","https://t.me/+VHxJFX4tjM9lZWNi","https://t.me/+T8bVf6Eq7vU4ZTgy","https://t.me/+Iri6yO5mnV1jOGIy","https://t.me/+7ePy-wx1sZA5ZGEy","https://t.me/+UdT8JddZr2xiMTI6","https://t.me/+a71cPIWH4IMyMDYy","https://t.me/+9vjJPVKttbViMmRi","https://t.me/+TKl4SlqEYmBhOTIy","https://t.me/+uKW5HPal2Z4xNWYy","https://t.me/+AMTKxuZtpns2ZmYy","https://t.me/+uPaV8cYQXPUyODI6","https://t.me/+vjrbgDjuWrU4YTUy","https://t.me/+8CmSyh-omipjY2Zi","https://t.me/+tsuJSfAYqTwwMmFi","https://t.me/+u-aw-qGY-k03NjQy","https://t.me/+qNXszpEojgdjOWEy","https://t.me/+xsPt_J_6zYdjZDJi"}
 				msg := tgbotapi.NewMessage(chatId[p], "Оплата прошла успешно!✅ Держи ссылку-приглашение в ТГК "+links[m])
 				if _, err := bot.Send(msg); err != nil {
 					log.Panic(err)
@@ -215,17 +238,17 @@ func main() {
 				m++
 			
 
-			case "checkOKCurs":
-				links := []string{"https://t.me/+khhLP4SViY4zYWVi","https://t.me/+lHnldtl2-IRjMDFi","https://t.me/+fUGO6xTFdDgwYTUy","https://t.me/+d57RhkHGYHJhZWZi","https://t.me/+1QNUY13PMK9hZDZi","https://t.me/+PvSbNvacWmpkMjYy","https://t.me/+QYz6qoYJ_iQyYjZi","https://t.me/+utItj_BLubAxOTY6","https://t.me/+sKk1Dj-YX5U2ZTNi","https://t.me/+q8YswIRdA6E1YWU6","https://t.me/+tXFO4WMM3IlhZTAy","https://t.me/+uIJ7IeO_cgljYzcy","https://t.me/+cliu8tX01i00MjAy","https://t.me/+yVPeV6uw49k3Y2Uy","https://t.me/+1fQ2u2K1839hNTU6","https://t.me/+qUdtE3pDZXA2MDky","https://t.me/+4rCSvSLNUGkxYmUy","https://t.me/+nBoMyYWghbthNTVi","https://t.me/+Vz7lsVnlT5xlYjVi","https://t.me/+r3ZUmivUnJw0YWU6","https://t.me/+rEQnA134Zlk2ZmUy","https://t.me/+lOnLgooQarllZDQy","https://t.me/+axnhKSP-WghkM2Ni","https://t.me/+RedElvwOCjs2YjAy","https://t.me/+UdkkzGAMqRU4YzM6","https://t.me/+9SznMfzebXBmN2Qy","https://t.me/+flqrenV3vBsxY2Iy","https://t.me/+-8VZid8sPR02NTZi","https://t.me/+fXeC4JU6Cm9lYjAy","https://t.me/+reb5zGMdniU4OTEy","https://t.me/+jPrPGCj57rw3Y2Ji","https://t.me/+KlQF4noTUAI4M2Ri","https://t.me/+b3W9Tb5wNxk0MjEy","https://t.me/+U60JCPpkYXY4ZmEy","https://t.me/+V7dk8CKnPxsxYjcy","https://t.me/+JynIZqBj99UzNDNi","https://t.me/+kONOvv1sqaZhYmQy","https://t.me/+OomTRpHWE1w3MmQy","https://t.me/+kDpCn-vsp0UwYTBi","https://t.me/+kMDP6qFgZzRjOTky","https://t.me/+xc5mwza8tHFkNWMy","https://t.me/+71PDJGocNkRmZjk6","https://t.me/+tS8tcysxAigzMzli","https://t.me/+6vkNfg64XMw3MzUy","https://t.me/+hKfMPCCgi3sxOGUy"}
+			case "checkOKAIP":
+				links := []string{"https://t.me/+lAYWxD2U8REyNWEy","https://t.me/+HIpzzsjxQygxNmVi","https://t.me/+1Tei-w_LV8NiOWMy","https://t.me/+qTIKYFIvlkE0NmNi","https://t.me/+rfBnWARq5b1lOTIy","https://t.me/+Zj3VzttakuIzYzky","https://t.me/+DXI6kcQMJoExNGEy","https://t.me/+KArZWFTvUjllZjFi","https://t.me/+N-tLEKiAMFliYmJi","https://t.me/+qf_m3PXQuTUyNzMy","https://t.me/+96xeqBp2oBg3YjE6","https://t.me/+aM9H7sfdV1wwOTFi","https://t.me/+X-21OFAhL-tjYWVi","https://t.me/+4082inrBcfpmYjli","https://t.me/+gvudEyhtdXthMWUy","https://t.me/+N6TL8x48ZshiMGQy","https://t.me/+kZx7YI45CYE2Yjc6","https://t.me/+sgexPZsmK0M0ODcy","https://t.me/+9Pq2wfmNkgw0MGQy","https://t.me/+ISp_QRBQlUQ3Mzc6","https://t.me/+n4sH_ULlaEw4Njhi","https://t.me/+FEUBdOLBJMtlZDQy","https://t.me/+tdHaUCar_hM2YmNi","https://t.me/+iMeRerN2hGY1ODEy","https://t.me/+gwUCBrpqdTw2OWUy","https://t.me/+kqKclayN6StlZjQy","https://t.me/+Zlu6UnWEcwg0ZGQ6","https://t.me/+TaG2ABTtg5c3ODg6","https://t.me/+IrSDJX-lSYpjNGZi","https://t.me/+dhsaWgZm0d43NDQ6","https://t.me/+6WdVpimqyIIyNzRi","https://t.me/+3HW5OK6xDDgwYzMy","https://t.me/+h18FGcTjkARhNGUy","https://t.me/+xs0hAWHVmIA4OWJi","https://t.me/+DCzx2NRX5UFmNTNi","https://t.me/+nCrR18y8D9NjNWJi","https://t.me/+l9_z-EGpmOszYzVi","https://t.me/+qcLI841cppgxMmEy","https://t.me/+Xy9M77I7cbVkMmNi","https://t.me/+UwlTTjjk78k0OGRi","https://t.me/+m1D_v-tPI_U4YjBi","https://t.me/+EqAMMnE4H85iZGRi","https://t.me/+gwFVHdcTcEEyOWQy","https://t.me/+8E0NuR5M62U1MTYy","https://t.me/+8E0NuR5M62U1MTYy"}
 				msg := tgbotapi.NewMessage(chatId[p], "Оплата прошла успешно!✅ Держи ссылку-приглашение в ТГК "+links[a])
 				if _, err := bot.Send(msg); err != nil {
 					log.Panic(err)
 				}
 				a++
 
-			case "checkOKMathCurs":
-				links1 := []string{"https://t.me/+Hm7JCKMS5p80YzQy","https://t.me/+i-1kWLSHbwxiMDU6","https://t.me/+Td6ZKPl55aRlMDk6","https://t.me/+qebWRLDdgrRhYjQy","https://t.me/+Ns6QuCVNsYgyMzRi","https://t.me/+fTlftaWs5IUyMjZi","https://t.me/+zkaabqZRQWAwMzdi","https://t.me/+FkrIykhzoA44Mzcy","https://t.me/+Yz-wlXzePU9jNWVi","https://t.me/+uRIynb6FGWVmNzhi","https://t.me/+ssEyrDQ4ZE4zNTgy","https://t.me/+jvVku9n0aKsxN2Ey","https://t.me/+RNSB52nh4s00YjQ6","https://t.me/+yjEejkckmiY5MmRi","https://t.me/+exfDaoih2yk3NmQy","https://t.me/+k-E6QMv_hnI1YjUy","https://t.me/+e66fLWh5l7I2MjUy","https://t.me/+Lq38ZJWWD7Y3Njk6","https://t.me/+86lS81a67Q00Nzky","https://t.me/+LMLNT4-Ka385ZmQy","https://t.me/+LwOlS5plmRdiNzgy","https://t.me/+GyOnbIQqU_Y3NmVi","https://t.me/+RadF3gvTR-M0ZGEy","https://t.me/+V0gXSsGj1eEwZGJi","https://t.me/+d1ma0Y0ykns3ZmUy","https://t.me/+WsQyULJTG2IwNzhi","https://t.me/+j2D2qjr53_c5NTFi","https://t.me/+MTBA9_IPBVk0OGUy","https://t.me/+jGJa2LXjredhNTBi","https://t.me/+oCucPaT8NDg2NzBi","https://t.me/+aSBmf3iSm-kyYmRi","https://t.me/+LtU7I9IfLY5kNTli","https://t.me/+17grbK7W6zZmYzYy","https://t.me/+0xWmHB5dP383Y2Yy","https://t.me/+chs8DyD8WrhjM2Ni","https://t.me/+Q9i_D8QOGBI5YjEy","https://t.me/+YyNsuuo_vTM5ZmNi","https://t.me/+RY5WPjJ_8P4xOWNi","https://t.me/+bpGO7BvA7SliNjBi","https://t.me/+47C6RsBZWD9kOGEy","https://t.me/+QNBoJXbdoJw5OGUy","https://t.me/+NwrKLqmbMWkxZDAy","https://t.me/+rDgB6OO55Vc0MWMy","https://t.me/+hZagTFEv4b4wYTky","https://t.me/+mfeZypIvd9U5MGUy"}
-				links2 := []string{"https://t.me/+khhLP4SViY4zYWVi","https://t.me/+lHnldtl2-IRjMDFi","https://t.me/+fUGO6xTFdDgwYTUy","https://t.me/+d57RhkHGYHJhZWZi","https://t.me/+1QNUY13PMK9hZDZi","https://t.me/+PvSbNvacWmpkMjYy","https://t.me/+QYz6qoYJ_iQyYjZi","https://t.me/+utItj_BLubAxOTY6","https://t.me/+sKk1Dj-YX5U2ZTNi","https://t.me/+q8YswIRdA6E1YWU6","https://t.me/+tXFO4WMM3IlhZTAy","https://t.me/+uIJ7IeO_cgljYzcy","https://t.me/+cliu8tX01i00MjAy","https://t.me/+yVPeV6uw49k3Y2Uy","https://t.me/+1fQ2u2K1839hNTU6","https://t.me/+qUdtE3pDZXA2MDky","https://t.me/+4rCSvSLNUGkxYmUy","https://t.me/+nBoMyYWghbthNTVi","https://t.me/+Vz7lsVnlT5xlYjVi","https://t.me/+r3ZUmivUnJw0YWU6","https://t.me/+rEQnA134Zlk2ZmUy","https://t.me/+lOnLgooQarllZDQy","https://t.me/+axnhKSP-WghkM2Ni","https://t.me/+RedElvwOCjs2YjAy","https://t.me/+UdkkzGAMqRU4YzM6","https://t.me/+9SznMfzebXBmN2Qy","https://t.me/+flqrenV3vBsxY2Iy","https://t.me/+-8VZid8sPR02NTZi","https://t.me/+fXeC4JU6Cm9lYjAy","https://t.me/+reb5zGMdniU4OTEy","https://t.me/+jPrPGCj57rw3Y2Ji","https://t.me/+KlQF4noTUAI4M2Ri","https://t.me/+b3W9Tb5wNxk0MjEy","https://t.me/+U60JCPpkYXY4ZmEy","https://t.me/+V7dk8CKnPxsxYjcy","https://t.me/+JynIZqBj99UzNDNi","https://t.me/+kONOvv1sqaZhYmQy","https://t.me/+OomTRpHWE1w3MmQy","https://t.me/+kDpCn-vsp0UwYTBi","https://t.me/+kMDP6qFgZzRjOTky","https://t.me/+xc5mwza8tHFkNWMy","https://t.me/+71PDJGocNkRmZjk6","https://t.me/+tS8tcysxAigzMzli","https://t.me/+6vkNfg64XMw3MzUy","https://t.me/+hKfMPCCgi3sxOGUy"}
+			case "checkOKMathAIP":
+				links1 := []string{"https://t.me/+MMcfy-nkA0tjZTli","https://t.me/+YIie7weL3qlmYmIy","https://t.me/+SeJ2vbADeWYwNDky","https://t.me/+ZcOwwyD46QpkN2U6","https://t.me/+0gQ8ilcuaBszNGM6","https://t.me/+P1nxlOfXg-0zMTYy","https://t.me/+ZIv6DFxrFNVkYzRi","https://t.me/+xEzO8RpatQ5iYzhi","https://t.me/+9hX-Th4499I3ZTcy","https://t.me/+oAacitUxbhMyZDgy","https://t.me/+SfDmXj1PB0diNzVi","https://t.me/+xKkvko1wjJ5iM2Zi","https://t.me/+81ck2IwQGtcxMmI6","https://t.me/+UZJHoU7kszw0MTNi","https://t.me/+D_PpuwEL_QhhOGY6","https://t.me/+eau2YNTPGSE2NGFi","https://t.me/+yzQ6LUFYrRRhMmFi","https://t.me/+kzU-y5dgpuc5OWIy","https://t.me/+PCk0csw1pbQ0NGUy","https://t.me/+gTCt7I_Fga03OTky","https://t.me/+-qG9K8yHwuE0YTc6","https://t.me/+fUxnfoR6-lYwNDEy","https://t.me/+6pHfQpDbp7JjYWIy","https://t.me/+t5ye9pfQ4nA4MDky","https://t.me/+h33aP4qxRHA3YzJi","https://t.me/+CGzkc6K5GCY0Yjgy","https://t.me/+T0nEVidEfnk1OTIy","https://t.me/+Arm0GYXRVMY2ZDU6","https://t.me/+VHxJFX4tjM9lZWNi","https://t.me/+T8bVf6Eq7vU4ZTgy","https://t.me/+Iri6yO5mnV1jOGIy","https://t.me/+7ePy-wx1sZA5ZGEy","https://t.me/+UdT8JddZr2xiMTI6","https://t.me/+a71cPIWH4IMyMDYy","https://t.me/+9vjJPVKttbViMmRi","https://t.me/+TKl4SlqEYmBhOTIy","https://t.me/+uKW5HPal2Z4xNWYy","https://t.me/+AMTKxuZtpns2ZmYy","https://t.me/+uPaV8cYQXPUyODI6","https://t.me/+vjrbgDjuWrU4YTUy","https://t.me/+8CmSyh-omipjY2Zi","https://t.me/+tsuJSfAYqTwwMmFi","https://t.me/+u-aw-qGY-k03NjQy","https://t.me/+qNXszpEojgdjOWEy","https://t.me/+xsPt_J_6zYdjZDJi"}
+				links2 := []string{"https://t.me/+lAYWxD2U8REyNWEy","https://t.me/+HIpzzsjxQygxNmVi","https://t.me/+1Tei-w_LV8NiOWMy","https://t.me/+qTIKYFIvlkE0NmNi","https://t.me/+rfBnWARq5b1lOTIy","https://t.me/+Zj3VzttakuIzYzky","https://t.me/+DXI6kcQMJoExNGEy","https://t.me/+KArZWFTvUjllZjFi","https://t.me/+N-tLEKiAMFliYmJi","https://t.me/+qf_m3PXQuTUyNzMy","https://t.me/+96xeqBp2oBg3YjE6","https://t.me/+aM9H7sfdV1wwOTFi","https://t.me/+X-21OFAhL-tjYWVi","https://t.me/+4082inrBcfpmYjli","https://t.me/+gvudEyhtdXthMWUy","https://t.me/+N6TL8x48ZshiMGQy","https://t.me/+kZx7YI45CYE2Yjc6","https://t.me/+sgexPZsmK0M0ODcy","https://t.me/+9Pq2wfmNkgw0MGQy","https://t.me/+ISp_QRBQlUQ3Mzc6","https://t.me/+n4sH_ULlaEw4Njhi","https://t.me/+FEUBdOLBJMtlZDQy","https://t.me/+tdHaUCar_hM2YmNi","https://t.me/+iMeRerN2hGY1ODEy","https://t.me/+gwUCBrpqdTw2OWUy","https://t.me/+kqKclayN6StlZjQy","https://t.me/+Zlu6UnWEcwg0ZGQ6","https://t.me/+TaG2ABTtg5c3ODg6","https://t.me/+IrSDJX-lSYpjNGZi","https://t.me/+dhsaWgZm0d43NDQ6","https://t.me/+6WdVpimqyIIyNzRi","https://t.me/+3HW5OK6xDDgwYzMy","https://t.me/+h18FGcTjkARhNGUy","https://t.me/+xs0hAWHVmIA4OWJi","https://t.me/+DCzx2NRX5UFmNTNi","https://t.me/+nCrR18y8D9NjNWJi","https://t.me/+l9_z-EGpmOszYzVi","https://t.me/+qcLI841cppgxMmEy","https://t.me/+Xy9M77I7cbVkMmNi","https://t.me/+UwlTTjjk78k0OGRi","https://t.me/+m1D_v-tPI_U4YjBi","https://t.me/+EqAMMnE4H85iZGRi","https://t.me/+gwFVHdcTcEEyOWQy","https://t.me/+8E0NuR5M62U1MTYy","https://t.me/+8E0NuR5M62U1MTYy"}
 				msg := tgbotapi.NewMessage(chatId[p], "Оплата прошла успешно!✅ Держи ссылку-приглашение в ТГК по математике "+links1[m]+" и ТГК с курсом по матану"+links2[a])
 				if _, err := bot.Send(msg); err != nil {
 					log.Panic(err)
@@ -244,41 +267,37 @@ func main() {
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"🤑Оплата 800 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
+					"🤑Оплата 700 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
 
-			case "payCurs":
+			case "payAIP":
 				count++
-				v = append(v, "payCurs")
+				v = append(v, "payAIP")
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"🤑Оплата 800 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
+					"🤑Оплата 600 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
-			case "payMathCurs":
+			case "payMathAIP":
 				count++
-				v = append(v, "payMathCurs")
+				v = append(v, "payMathAIP")
 				edit := tgbotapi.NewEditMessageText(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"🤑Оплата 1300 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
+					"🤑Оплата 500 руб. на +79997971960 СБП (ВТБ).\nОБЯЗАТЕЛЬНО отправь скрин об оплате!")
 
 				if _, err := bot.Send(edit); err != nil {
 					panic(err)
 				}
 			case "podarok":
-				msg := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, "Держи бесплатный ответ на вопрос по математике + одно бесплатное видео с курса + ДЗ. Убедись в качестве и забери полный комплект!🥰")
+				msg := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, "Держи бесплатный ответ на вопрос по математике + по АИП. Убедись в качестве и забери полный комплект!🥰")
 				if _, err := bot.Send(msg); err != nil {
-					panic(err)
-				}
-				msg1 := tgbotapi.NewMessage(update.CallbackQuery.Message.Chat.ID, "https://disk.yandex.ru/i/YuRJ6zj1hgqlMw . Ссылка на видео с курса на тему: Исследование функций на экстремум.")
-				if _, err := bot.Send(msg1); err != nil {
 					panic(err)
 				}
 				// Открываем PDF-файл
@@ -319,7 +338,7 @@ func main() {
 				edit := tgbotapi.NewEditMessageTextAndMarkup(
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
-					"Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике + курс по всему 2 семестру с теорией и разборами заданий из билетов прошлых лет + ДЗ! 🥰",
+					"Вас приветствует бот *YSTU EXAMS*👋\nЭкзамены уже очень скоро! Поэтому, чтобы не терять время, ты можешь приобрести ответы на экзамены по Математике + Алгоритмизации и программированию! 🥰",
 					menuKeyboard,
 				)
 				edit.ParseMode = "Markdown"
