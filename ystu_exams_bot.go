@@ -234,7 +234,7 @@ func main() {
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
 					"*Ответы на экзамен по Математике (преп. Ройтенберг В.Ш.) и Алгоритмизации и программированию (преп. Никитина Т.П.)*\nЦена: 500 рублей",
-					payAIP,
+					payMathAIP,
 				)
 				edit3.ParseMode = "Markdown"
 
