@@ -87,7 +87,7 @@ var (
 	)
 	menuMathAIP = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену по Математике + АИП", "otvetyAIP"),
+			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену по Математике + АИП", "otvetyMathAIP"),
 		),
 	)	
 )
