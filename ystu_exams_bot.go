@@ -77,12 +77,12 @@ var (
 	)
 	menuMath = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену", "otvetyMath"),
+			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену по Математике", "otvetyMath"),
 		),
 	)
 	menuAIP = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену", "otvetyAIP"),
+			tgbotapi.NewInlineKeyboardButtonData("✍️Ответы на вопросы к экзамену по Алгоритмизации и программированию", "otvetyAIP"),
 		),
 	)
 	menuMathAIP = tgbotapi.NewInlineKeyboardMarkup(
@@ -221,6 +221,19 @@ func main() {
 					update.CallbackQuery.Message.Chat.ID,
 					update.CallbackQuery.Message.MessageID,
 					"*Ответы на экзамен по Алгоритмизации и программированию (преп. Никитина Т.П.)*\nЦена: 600 рублей",
+					payAIP,
+				)
+				edit3.ParseMode = "Markdown"
+
+				if _, err := bot.Send(edit3); err != nil {
+					panic(err)
+				}
+
+			case "otvetyMathAIP":
+				edit3 := tgbotapi.NewEditMessageTextAndMarkup(
+					update.CallbackQuery.Message.Chat.ID,
+					update.CallbackQuery.Message.MessageID,
+					"*Ответы на экзамен по Математике (преп. Ройтенберг В.Ш.) и Алгоритмизации и программированию (преп. Никитина Т.П.)*\nЦена: 500 рублей",
 					payAIP,
 				)
 				edit3.ParseMode = "Markdown"
